@@ -6,8 +6,9 @@ const dotenv = require('dotenv').config()
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const passport = require('passport');
 
+// Models
+const Spotify = new (require('./models/Spotify'))()
 
 // Config
 app.set('views', __dirname + '/views');
@@ -19,9 +20,17 @@ app.use(cookieParser());
 app.use(cors());
 app.use(session({secret: process.env.SESSION_SECRET,saveUninitialized: true,resave: true}))
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(async (req, res, next) => {
+    req.Spotify = Spotify;
 
+    const logged = await Spotify.spotifyLogged(req);
+    req.logged = logged;
+
+    const user_data = (logged) ? await Spotify.getUserData(req) : {};
+    req.user_data = user_data.response;
+   
+    next();
+});
 
 // Router
 const router = require('./routes/routes');
