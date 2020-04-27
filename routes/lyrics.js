@@ -8,7 +8,7 @@ router.use(async (req, res, next) => {
 });
 
 router.get('/', async function(req, res) {
-    res.render('home', {
+    res.render('lyrics', {
         logged: true, 
         BASE_URL: process.env.BASE_URL,
         user_data

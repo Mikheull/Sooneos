@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let _logged, _user_data;
+let logged, user_data;
 
 router.use(async (req, res, next) => {
 	logged = req.logged;
