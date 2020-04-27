@@ -1,21 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-
 router.use('/', require('./index') );
 router.use('/auth', require('./auth') );
-router.use('/account', ensureAuthenticated, require('./account') );
+router.use('/account', require('./account') );
+
+
+router.get('/logout', function (req, res) {
+    for (let prop in req.cookies) {
+        if (!req.cookies.hasOwnProperty(prop)) {
+            continue;
+        }
+        res.cookie(prop, '', {expires: new Date(0)});
+    }
+	res.redirect('/');
+})
 
 router.use(function(req,res){
-	res.send('404');
+	res.render('404', {baseUri: process.env.BASE_URI});
 });
 
 
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect('/auth/spotify');
-}
 
 module.exports = router;
