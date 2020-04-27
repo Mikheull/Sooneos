@@ -8,11 +8,16 @@ router.use(async (req, res, next) => {
 });
 
 router.get('/', async function(req, res) {
-    res.render('home', {
-        logged: true, 
-        BASE_URL: process.env.BASE_URL,
-        user_data
-    });
+    if (logged) {
+        res.render('blindtest', {
+            logged: logged, 
+            BASE_URL: process.env.BASE_URL,
+            user_data
+        });
+    } else {
+		// Non connecté à Spotify
+		res.redirect('auth');
+	}
 });
 
 module.exports = router;

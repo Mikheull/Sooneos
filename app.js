@@ -26,8 +26,20 @@ app.use(async (req, res, next) => {
     const logged = await Spotify.spotifyLogged(req);
     req.logged = logged;
 
-    const user_data = (logged) ? await Spotify.getUserData(req) : {};
-    req.user_data = user_data.response;
+    let user_data;
+    if(!req.cookies.userData) {
+        const datas = await Spotify.getUserData(req);
+        if(datas.status == true){
+            res.cookie('userData', datas.response, {maxAge: Date.now() + (10 * 365 * 24 * 60 * 60)});
+            user_data = (logged) ? datas.response : {};
+        }else{
+            user_data = {};
+        }
+    }else{
+        user_data = req.cookies.userData;
+    }
+       
+    req.user_data = user_data;
    
     next();
 });
