@@ -13,7 +13,7 @@ router.use(async (req, res, next) => {
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const redirect_uri = process.env.SPOTIFY_CALLBACK;
-const scope = 'user-read-currently-playing';
+const scope = 'user-read-currently-playing playlist-modify-public';
 const stateKey = 'spotify_auth_state';
 
 let generateRandomString = function(length) {

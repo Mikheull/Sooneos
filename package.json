@@ -28,6 +28,7 @@
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
     "querystring": "^0.2.0",
     "request": "^2.88.2",
     "socket.io": "^2.3.0"

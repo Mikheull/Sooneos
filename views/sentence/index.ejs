@@ -49,16 +49,24 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body class="antialiased">
     <%- include('_header'); -%>
 
-    <%- include('base'); -%>
+    <%if(locals.viewPath){%>
+        <%- include( locals.viewPath ); -%>
+    <%}else{%>
+        <%- include('base'); -%>
+    <%}%>
 
     <%- include('_footer'); -%>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/main.js"></script>
+    <script src="/javascripts/sentence.js"></script>
 </body>
 </html>
