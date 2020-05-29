@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.use('/', require('./index') );
 router.use('/auth', require('./auth') );
+router.use('/help', require('./help') );
 router.use('/lyrics', require('./lyrics') );
 router.use('/sentence', require('./sentence') );
 router.use('/blindtest', require('./blindtest') );
