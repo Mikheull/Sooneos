@@ -3,9 +3,11 @@
 <nav x-data="{ open: false }" @keydown.window.escape="open = false" class="border-b border-gray-200">
 	<div class="px-6 mx-auto lg:px-16">
 		<div class="flex items-center justify-between h-16">
-			<div class="flex items-center">
-				<h1 class="text-gray-800 text-lg font-bold tracking-widest uppercase"><a href="<%= BASE_URL %>">Sooneos</a></h1>
-			</div>
+			<a href="<%= BASE_URL %>" class="flex items-center">
+				<div id="page-caption" class="font-semibold text-gray-700 text-lg">
+					<img src="/images/logo_sooneos.svg" alt="Logo" class="w-32">
+				</div>
+			</a>
 			<div class="hidden lg:block">
 				<div class="flex items-center ml-4 md:ml-6">
 					<% if(logged == false) { %>

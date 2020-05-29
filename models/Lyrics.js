@@ -15,7 +15,6 @@ class Lyrics {
             return response.data;
         })
         .catch(err => {
-            // console.error(err);
             return false;
         });
     }
@@ -33,7 +32,25 @@ class Lyrics {
             return response.data;
         })
         .catch(err => {
-            // console.error(err);
+            return false;
+        });
+    }
+
+
+    async searchLyrics(artist, title){
+        return axios({
+            method: 'get',
+            url: `https://api.lyrics.ovh/v1/${artist}/${title}`,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            console.log(err);
+            
             return false;
         });
     }

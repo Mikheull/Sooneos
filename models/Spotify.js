@@ -36,7 +36,10 @@ class Spotify {
             }
         })
         .then(response => {
-            return {status: true, response: response.data};
+            if(response.status == '201' || response.status == '200'){
+                return {status: true, response: response.data};
+            }
+            return {status: false, code: 'music-not-found'};
         })
         .catch(err => {
 			if((err.response.status && err.response.status == '401') && (err.response.statusText && err.response.statusText == 'Unauthorized')){

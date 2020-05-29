@@ -3,12 +3,15 @@ const app = express();
 const server = require('http').createServer(app);
 const session = require('express-session');
 const dotenv = require('dotenv').config()
+const cookie = require('cookie');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const io = require('socket.io')(server);
 
 // Models
 const Spotify = new (require('./models/Spotify'))()
+const Lyrics = new (require('./models/Lyrics'))()
 
 // Config
 app.set('views', __dirname + '/views');
@@ -43,6 +46,29 @@ app.use(async (req, res, next) => {
    
     next();
 });
+
+
+
+/**
+* Sockets de l'application
+*/
+io.on('connection', async function(socket){
+    const socketId = socket.id;
+    const cookies = cookie.parse(socket.request.headers.cookie || '');
+    
+    /**
+    * Récupérer des paroles
+    */
+    // socket.on('request_lyrics', async function()  {
+    //     const lyrics = Lyrics.searchLyrics('Booba', 'Jimmy');
+    //     console.log(lyrics);
+        
+
+    //     io.to(socketId).emit('response_lyrics', lyrics); 
+    // });
+
+});
+
 
 // Router
 const router = require('./routes/routes');
