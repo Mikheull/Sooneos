@@ -1,5 +1,5 @@
 {
-  "name": "sooneos.me",
+  "name": "sooneos",
   "version": "1.0.0",
   "description": "Lot of music applications with Spotify",
   "main": "app.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mikheull/Sooneos.me.git"
+    "url": "git+https://github.com/Mikheull/Sooneos.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mikheull/Sooneos.me/issues"
+    "url": "https://github.com/Mikheull/Sooneos/issues"
   },
-  "homepage": "https://github.com/Mikheull/Sooneos.me#readme",
+  "homepage": "https://github.com/Mikheull/Sooneos#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
