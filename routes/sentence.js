@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const fs = require("fs");
+const Utils = new (require('../models/Utils'))()
 
 let logged, user_data;
 let Spotify;
@@ -17,14 +18,19 @@ router.get('/', async function(req, res) {
     
     
     if (logged) {
-        res.render('sentence', {
-            logged: logged, 
-            BASE_URL: process.env.BASE_URL,
-            user_data,
-            data: {
-                featured_playlist
-            }
-        });
+		return res.render('index', {
+			data: {
+				authenticated: req.logged,
+				user_data,
+				featured_playlist
+			},
+			configuration: {
+				render: 'app/sentence/home',
+				current_page: 'sentence',
+				base_url: process.env.BASE_URL,
+				fs: await Utils.getPageConfig('app/sentence/home')
+			}
+		});
     } else {
 		// Non connecté à Spotify
 		res.redirect('auth');
@@ -64,7 +70,7 @@ router.get('/c/:sentence', async function(req, res, next) {
 			for(i = 0; i < decomposed_sentence.length; i++){
 				tmp_res = await Spotify.searchMusic(req, decomposed_sentence[i]);
 				if(tmp_res.response.statusText && tmp_res.response.statusText == 'Unauthorized'){
-					res.redirect('../auth');
+					res.redirect('../../auth');
 				}else{
 					filtered_res = tmp_res.response.tracks.items.filter(d => d.name.toLowerCase() === decomposed_sentence[i].toLowerCase());
 
@@ -84,7 +90,7 @@ router.get('/c/:sentence', async function(req, res, next) {
 				str = decomposed_sentence[i]+" "+decomposed_sentence[i + 1];
 				tmp_res = await Spotify.searchMusic(req, str);
 				if(tmp_res.response.statusText && tmp_res.response.statusText == 'Unauthorized'){
-					res.redirect('../auth');
+					res.redirect('../../auth');
 				}else{
 					filtered_res = tmp_res.response.tracks.items.filter(d => d.name.toLowerCase() === str.toLowerCase());
 
@@ -121,22 +127,26 @@ router.get('/c/:sentence', async function(req, res, next) {
 			error_message = `Too long (${sentence.length}/180)`;
 		}
 
-        res.render('sentence', {
-			logged: logged, 
-			viewPath: 'response.ejs',
-            currentPage: 'creator',
-            BASE_URL: process.env.BASE_URL,
-            user_data,
-            response: {
-                error: error_status,
-                message: error_message,
-                data: {
-                    final_result, sentence,
-                }
-            },
-        });
+		return res.render('index', {
+			data: {
+				authenticated: req.logged,
+				user_data,
+				response: {
+					error: error_status,
+					message: error_message,
+					final_result, 
+					sentence
+				},
+			},
+			configuration: {
+				render: 'app/sentence/response',
+				current_page: 'sentence',
+				base_url: process.env.BASE_URL,
+				fs: await Utils.getPageConfig('app/sentence/response')
+			}
+		});
 	}else {
-		res.redirect('../auth');
+		res.redirect('../../auth');
 	}
 });
 
@@ -155,7 +165,7 @@ router.post('/c/:sentence', async function(req, res, next) {
 			res.redirect('');
 		}
 	}else {
-		res.redirect('../auth');
+		res.redirect('../../auth');
 	}
 });
 
@@ -166,20 +176,23 @@ router.get('/p/:token', async function(req, res, next) {
 	let token = req.params.token;
 
 	if(logged){
-        res.render('sentence', {
-            logged: logged, 
-			viewPath: 'playlist.ejs',
-            currentPage: 'creator',
-            BASE_URL: process.env.BASE_URL,
-            user_data,
-            response: {
-				error: error_status,
-				message: error_message,
-			},
+		return res.render('index', {
 			data: {
+				authenticated: req.logged,
+				user_data,
+				response: {
+					error: error_status,
+					message: error_message,
+				},
 				token
+			},
+			configuration: {
+				render: 'app/sentence/playlist',
+				current_page: 'playlist',
+				base_url: process.env.BASE_URL,
+				fs: await Utils.getPageConfig('app/sentence/playlist')
 			}
-        });
+		});
 	}else {
 		res.redirect('../auth');
 	}

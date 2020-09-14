@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('partials/metas'); -%>
+    <%- include('partials/stylesheets'); -%>
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <%- include('partials/libs'); -%>
+</head>
+
+<body class="app">
+    <%- include( 'pages/' + locals.configuration.render + '/index.ejs'); -%>
+
+    <%- include('partials/javascripts'); -%>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/assets/javascripts/main.js"></script>
+</body>
+</html>

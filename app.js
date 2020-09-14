@@ -12,6 +12,7 @@ const io = require('socket.io')(server);
 // Models
 const Spotify = new (require('./models/Spotify'))()
 const Lyrics = new (require('./models/Lyrics'))()
+const Blindtest = new (require('./models/Blind'))()
 
 // Config
 app.set('views', __dirname + '/views');
@@ -59,13 +60,40 @@ io.on('connection', async function(socket){
     /**
     * Récupérer des paroles
     */
-    // socket.on('request_lyrics', async function()  {
-    //     const lyrics = Lyrics.searchLyrics('Booba', 'Jimmy');
-    //     console.log(lyrics);
-        
+    socket.on('request_lyrics', async function()  {
+        // const current_music = await Spotify.getCustCurrentMusic(cookies);
+        // console.log(current_music);
 
-    //     io.to(socketId).emit('response_lyrics', lyrics); 
-    // });
+        // if(current_music.status == true && current_music.response.currently_playing_type == 'track'){
+        //     const lyrics = await Lyrics.searchLyrics(current_music.response.item.album.artists[0].name, current_music.response.item.name);
+
+        //     console.log(lyrics);
+        //     if(lyrics){
+        //         io.to(socketId).emit('response_lyrics', lyrics, current_music); 
+        //     }else{
+        //         io.to(socketId).emit('response_lyrics_error', 'lyrics-not-found');
+        //     }
+		// }else{
+		// 	if(current_music.code == 'spotify-disconnected'){
+        //         io.to(socketId).emit('response_lyrics_error', 'spotify-disconnected'); 
+        //     }else{
+        //         io.to(socketId).emit('response_lyrics_error', 'music-not-found'); 
+        //     }
+            
+        // }
+       
+    });
+
+    /**
+     * Blindtest -> Edit Usermane
+     */
+    socket.on('bl_edit_username', async function (username) { 
+        console.log(username);
+        console.log(cookies);
+
+        // cookies('blt_username', username, {maxAge: Date.now() + (1 * 3600 * 1000)});
+        // console.log(cookies);
+    })
 
 });
 

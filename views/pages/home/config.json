@@ -1,0 +1,23 @@
+{
+    "metas": {
+        "title": "Sooneos - Home"
+    },
+
+    "must_be_logged": false,
+
+    "libs": [
+        "jquery",
+        "fontawesome"
+    ],
+
+    "css":{
+        "local": [],
+        "online": []
+    },
+
+    "javascript":{
+        "local": [],
+        "online": []
+    }
+
+}

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Lyrics = new (require('../models/Lyrics'))()
+const Utils = new (require('../models/Utils'))()
 
 let logged, user_data;
 let Spotify;
@@ -31,15 +32,21 @@ router.get('/', async function(req, res) {
 			}else{
 				lyrics = null;
 			}
-		}
+        }
 
-        res.render('lyrics', {
-            logged: logged, 
-            BASE_URL: process.env.BASE_URL,
-            user_data,
-            current_music,
-            lyrics
-        });
+		return res.render('index', {
+			data: {
+				authenticated: req.logged,
+				user_data, current_music, lyrics
+			},
+			configuration: {
+				render: 'app/lyrics/home',
+				current_page: 'lyrics',
+				base_url: process.env.BASE_URL,
+				fs: await Utils.getPageConfig('app/lyrics/home')
+			}
+		});
+
     } else {
 		// Non connecté à Spotify
 		res.redirect('auth');

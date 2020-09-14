@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const request = require('request');
 const querystring = require('querystring');
+const Utils = new (require('../models/Utils'))()
 
 
 let logged;
@@ -30,7 +31,17 @@ let generateRandomString = function(length) {
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-	res.render('auth', { logged: logged, baseUri: process.env.BASE_URI });
+    return res.render('index', {
+        data: {
+            authenticated: req.logged,
+        },
+        configuration: {
+            render: 'auth/login',
+            current_page: 'login',
+            base_url: process.env.BASE_URL,
+            fs: await Utils.getPageConfig('auth/login')
+        }
+    });
 });
 
 
@@ -126,7 +137,6 @@ router.get('/spotify/token', function(req, res) {
     request.post(authOptions, function(error, response, body) {
         if (!error && response.statusCode === 200) {
             let access_token = body.access_token;
-            re
         }else{
             res.send({
                 'access_token': null

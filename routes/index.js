@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let logged, user_data;
+const Utils = new (require('../models/Utils'))()
 
 router.use(async (req, res, next) => {
 	logged = req.logged;
@@ -8,10 +9,17 @@ router.use(async (req, res, next) => {
 });
 
 router.get('/', async function(req, res) {
-    res.render('home', {
-        logged: logged, 
-        BASE_URL: process.env.BASE_URL,
-        user_data
+    return res.render('index', {
+        data: {
+            authenticated: req.logged,
+            user_data
+        },
+        configuration: {
+            render: 'home',
+            current_page: 'home',
+            base_url: process.env.BASE_URL,
+            fs: await Utils.getPageConfig('home')
+        }
     });
 });
 
