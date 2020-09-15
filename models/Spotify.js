@@ -50,6 +50,31 @@ class Spotify {
 			}
         });
     }
+
+    async getCustCurrentMusic(cookies) {
+		const token = cookies.spotify_accessToken;
+        return axios({
+            method: 'get',
+            url: "https://api.spotify.com/v1/me/player/currently-playing",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(response => {
+            if(response.status == '201' || response.status == '200'){
+                return {status: true, response: response.data};
+            }
+            return {status: false, code: 'music-not-found'};
+        })
+        .catch(err => {
+			if((err.response.status && err.response.status == '401') && (err.response.statusText && err.response.statusText == 'Unauthorized')){
+				return {status: false, code: 'spotify-disconnected'};
+			}else{
+				return {status: false, code: 'music-not-found'};
+			}
+        });
+    }
     
     async searchMusic(req, query) {
 		const token = req.cookies.spotify_accessToken;

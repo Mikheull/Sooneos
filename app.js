@@ -61,26 +61,28 @@ io.on('connection', async function(socket){
     * Récupérer des paroles
     */
     socket.on('request_lyrics', async function()  {
-        // const current_music = await Spotify.getCustCurrentMusic(cookies);
-        // console.log(current_music);
+        const current_music = await Spotify.getCustCurrentMusic(cookies);
+        console.log(current_music);
 
-        // if(current_music.status == true && current_music.response.currently_playing_type == 'track'){
-        //     const lyrics = await Lyrics.searchLyrics(current_music.response.item.album.artists[0].name, current_music.response.item.name);
+        if(current_music.status == true && current_music.response.currently_playing_type == 'track'){
+            const query = encodeURI( current_music.response.item.name + ' ' + current_music.response.item.album.artists[0].name )
+			const idLyrics = await Lyrics.getIDLyrics(query);
 
-        //     console.log(lyrics);
-        //     if(lyrics){
-        //         io.to(socketId).emit('response_lyrics', lyrics, current_music); 
-        //     }else{
-        //         io.to(socketId).emit('response_lyrics_error', 'lyrics-not-found');
-        //     }
-		// }else{
-		// 	if(current_music.code == 'spotify-disconnected'){
-        //         io.to(socketId).emit('response_lyrics_error', 'spotify-disconnected'); 
-        //     }else{
-        //         io.to(socketId).emit('response_lyrics_error', 'music-not-found'); 
-        //     }
+			if(idLyrics && idLyrics.response.hits[0]){
+                lyrics = idLyrics.response.hits[0].result.id;
+                io.to(socketId).emit('response_lyrics', lyrics, current_music); 
+			}else{
+				io.to(socketId).emit('response_lyrics_error', 'lyrics-not-found'); 
+			}
             
-        // }
+		}else{
+			if(current_music.code == 'spotify-disconnected'){
+                io.to(socketId).emit('response_lyrics_error', 'spotify-disconnected'); 
+            }else{
+                io.to(socketId).emit('response_lyrics_error', 'music-not-found'); 
+            }
+            
+        }
        
     });
 
