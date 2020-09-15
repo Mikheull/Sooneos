@@ -16,7 +16,7 @@
     },
 
     "javascript":{
-        "local": ["anime.min", "album_anime", "lyrics"],
+        "local": ["lyrics"],
         "online": []
     }
 

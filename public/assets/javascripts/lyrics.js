@@ -4,31 +4,10 @@ $( document ).ready(function() {
     socket.on('response_lyrics', async function(lyrics, current_music) {
         console.log(lyrics, current_music);
 
-        let err_mess, app_html = ''
+        let err_mess = ''
 
         if(current_music && current_music.status == true){
-            if(lyrics){
-                app_html = `
-                <div id="content" class="mb-4">
-                    <div class="grid ">
-                        <div class="grid__item w-full lg:w-1/4 md:w-2/4 sm:w-1/2 px-4 mx-auto">
-                            <div class="album relative cursor-pointer">
-                                <div class="album__bg absolute w-full bg-white"></div>
-                                <img class="album__img w-full mb-2" style="box-shadow: -20px 20px #edf2f7;" src="${current_music.response.item.album.images[0].url}" alt="Music banner"/>
-                                <h2 class="album__title text-gray-800 text-3xl font-bold">${current_music.response.item.name}</h2>
-                                <h3 class="album__subtitle text-gray-600 text-md">${current_music.response.item.album.artists[0].name}</h3>
-                                <div class="album__description hidden">
-                                    <a href="${current_music.response.item.external_urls.spotify}" target="blank" class="text-green-400 underline block">Link to Spotify</a>
-                                    <a href="https://twitter.com/intent/tweet?url=&text=Ready%20to%20sing%20%C2%AB%20${current_music.response.item.name}%20-%20${current_music.response.item.album.artists[0].name}%20%C2%BB%20%3F%0ANow%20on%20sooneos.me%20%F0%9F%8E%89%F0%9F%8E%A4" target="blank" class="text-green-400 underline block">Share on twitter <i class="fa fa-twitter"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="iframe_genius"></div>
-                </div>
-                `
-            }else{
+            if(!lyrics){
                 // Erreur pas de paroles
                 err_mess = `<h3 class="text-gray-500 text-md mb-2">No lyrics has been found!</h3>`
             }
@@ -46,14 +25,22 @@ $( document ).ready(function() {
         }
 
         
-        if(err_mess == ''){
-            $('#lyrics_app').hide();
-            $('#response-mess').show();
+        if(err_mess !== ''){
+            $('#lyrics_app').addClass('hidden');
+            $('#response-mess').removeClass('hidden');
             $('#response-mess').html(err_mess)
         }else{
-            $('#lyrics_app').show();
-            $('#response-mess').hide();
-            $('#lyrics_app').html(app_html)
+            $('#lyrics_app').removeClass('hidden');
+            $('#response-mess').addClass('hidden');
+
+            $('.music_banner img').attr('src', current_music.response.item.album.images[0].url)
+            $('.music_title').html(current_music.response.item.name)
+            $('.music_subtitle').html(current_music.response.item.album.artists[0].name)
+
+
+            $('.music_link a').attr('href', current_music.response.item.external_urls.spotify)
+            $('.music_link_twitter a').attr('href', `https://twitter.com/intent/tweet?url=&text=Ready%20to%20sing%20%C2%AB%20${current_music.response.item.name}%20-%20${current_music.response.item.album.artists[0].name}%20%C2%BB%20%3F%0ANow%20on%20sooneos.me%20%F0%9F%8E%89%F0%9F%8E%A4`)
+
 
             const content = await fetch(`https://genius.com/songs/${lyrics}/embed.js`).then(data => data.text());
             const rgx = content.matchAll(/document\.write\((.*)\)/g)
@@ -69,7 +56,23 @@ $( document ).ready(function() {
 
 
     socket.on('response_lyrics_error', function(response) {
-        console.log(response);
+        let err_mess = ''
+
+        if(response){
+            if(response == 'spotify-disconnected'){
+                err_mess = `<h3 class="text-gray-500 text-md mb-2">You are not connected to Spotify!</h3>`
+            }else if(response == 'lyrics-not-found'){
+                err_mess = `<h3 class="text-gray-500 text-md mb-2">No lyrics has been found!</h3>`
+            }else if(response == 'music-not-found'){
+                err_mess = `<h3 class="text-gray-500 text-md mb-2">No music has been found!</h3>`
+            }
+        }
+
+        if(err_mess !== ''){
+            $('#lyrics_app').addClass('hidden');
+            $('#response-mess').removeClass('hidden');
+            $('#response-mess').html(err_mess)
+        }
     });
 
 

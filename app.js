@@ -7,7 +7,7 @@ const cookie = require('cookie');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, { wsEngine: 'ws' });
 
 // Models
 const Spotify = new (require('./models/Spotify'))()
@@ -62,7 +62,6 @@ io.on('connection', async function(socket){
     */
     socket.on('request_lyrics', async function()  {
         const current_music = await Spotify.getCustCurrentMusic(cookies);
-        console.log(current_music);
 
         if(current_music.status == true && current_music.response.currently_playing_type == 'track'){
             const query = encodeURI( current_music.response.item.name + ' ' + current_music.response.item.album.artists[0].name )
