@@ -86,6 +86,22 @@ io.on('connection', async function(socket){
     });
 
     /**
+     * Check si la musique a changée
+     */
+    socket.on('check_music_changes', async function(music) {
+        const current_music = await Spotify.getCustCurrentMusic(cookies);
+
+        if(current_music.status == true && current_music.response.currently_playing_type == 'track'){
+            if(current_music.response.item.id !== music){
+                io.to(socketId).emit('music_changed'); 
+            }
+		}else{
+            return false;
+        }
+    })
+
+
+    /**
      * Blindtest -> Edit Usermane
      */
     socket.on('bl_edit_username', async function (username) { 

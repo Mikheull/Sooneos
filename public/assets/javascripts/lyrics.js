@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+    let musicID = '';
+
     socket.emit( 'request_lyrics' ); 
 
     socket.on('response_lyrics', async function(lyrics, current_music) {
@@ -33,6 +35,7 @@ $( document ).ready(function() {
             $('#lyrics_app').removeClass('hidden');
             $('#response-mess').addClass('hidden');
 
+            musicID = current_music.response.item.id
             $('.music_banner img').attr('src', current_music.response.item.album.images[0].url)
             $('.music_title').html(current_music.response.item.name)
             $('.music_subtitle').html(current_music.response.item.album.artists[0].name)
@@ -84,10 +87,14 @@ $( document ).ready(function() {
         return div.firstChild; 
     }
     
+    let myInterval = setInterval(function () {
+        if(musicID !== ''){
+            socket.emit( 'check_music_changes', musicID ); 
+        }
+    }, 5000);
 
-
-    $('#refresh').click(function (e) { 
-        e.preventDefault();
+    socket.on('music_changed', function() {
         socket.emit( 'request_lyrics' ); 
-    });
+    })
+
 });
