@@ -4,8 +4,6 @@ $( document ).ready(function() {
     socket.emit( 'request_lyrics' ); 
 
     socket.on('response_lyrics', async function(lyrics, current_music) {
-        console.log(lyrics, current_music);
-
         let err_mess = ''
 
         if(current_music && current_music.status == true){

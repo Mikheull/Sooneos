@@ -105,8 +105,8 @@ io.on('connection', async function(socket){
      * Blindtest -> Edit Usermane
      */
     socket.on('bl_edit_username', async function (username) { 
-        console.log(username);
-        console.log(cookies);
+        // console.log(username);
+        // console.log(cookies);
 
         // cookies('blt_username', username, {maxAge: Date.now() + (1 * 3600 * 1000)});
         // console.log(cookies);

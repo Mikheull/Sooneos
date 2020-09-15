@@ -128,11 +128,9 @@ class Spotify {
             }
         })
         .then(response => {
-			console.log(reponse);
             return {status: true, response: response.data};
         })
         .catch(err => {
-			console.log(err);
 			return {status: false, response: err.response};
         });
 	}
