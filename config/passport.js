@@ -15,7 +15,7 @@ module.exports = () => {
       {
         clientID: process.env.SPOTIFY_CLIENT_ID,
         clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3030/auth/spotify/callback'
+        callbackURL: process.env.SPOTIFY_CALLBACK
       },
       
       function(accessToken, refreshToken, expires_in, profile, done) {
