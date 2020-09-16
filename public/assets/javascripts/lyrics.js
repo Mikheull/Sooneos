@@ -44,11 +44,6 @@ $( document ).ready(function() {
                 $('.music_subtitle').append(`<a href="${artist.external_urls.spotify}" target="blank" class="ml-2 text-gray-600 text-md">${artist.name}</a>`)
             });
 
-
-            $('.music_link a').attr('href', current_music.response.item.external_urls.spotify)
-            $('.music_link_twitter a').attr('href', `https://twitter.com/intent/tweet?url=&text=Ready%20to%20sing%20%C2%AB%20${current_music.response.item.name}%20-%20${current_music.response.item.album.artists[0].name}%20%C2%BB%20%3F%0ANow%20on%20sooneos.me%20%F0%9F%8E%89%F0%9F%8E%A4`)
-
-
             const content = await fetch(`https://genius.com/songs/${lyrics}/embed.js`).then(data => data.text());
             const rgx = content.matchAll(/document\.write\((.*)\)/g)
             const writes = [];

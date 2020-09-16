@@ -1,8 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, textarea, select {font-family: 'Nunito';}
+
+
+
+
 html {
     scroll-behavior: smooth;
 }
 
 
+
+/* Loader */
 .loader {
     position: relative;
     height: 50vh; width: 100%;
@@ -13,31 +24,26 @@ html {
     overflow: hidden;
     width: 100vw !important;
 }
-@media screen and (min-width: 425px) {
-    .loader { width: 50%; }
-}
-@media screen and (min-width: 768px) {
-    .loader { width: 33.33%; }
-}
-@media screen and (min-width: 1200px) {
-    .loader { width: 25%; }
-}
+
+@media screen and (min-width: 425px) {.loader { width: 50%; }}
+@media screen and (min-width: 768px) {.loader { width: 33.33%; }}
+@media screen and (min-width: 1200px) {.loader { width: 25%; }}
+
 .loader-container {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
 }
 
-     
-/* loader-21*/
 .loader .loader-circle {
     border: 4px solid rgb(248, 248, 248);
     border-radius: 50%;
     border-top: 4px solid #68d391;
     width: 100px; height: 100px;
-    animation: spin21 2s linear infinite;
+    animation: spin 2s linear infinite;
 }
-@keyframes spin21 {
+
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }

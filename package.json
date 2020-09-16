@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon",
+    "build": "npx tailwindcss build public/assets/stylesheets/main.css -o public/build/main.css"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "fs": "0.0.1-security",
     "querystring": "^0.2.0",
     "request": "^2.88.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "tailwindcss": "^1.8.10"
   }
 }
