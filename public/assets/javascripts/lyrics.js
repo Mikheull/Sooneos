@@ -26,6 +26,7 @@ $( document ).ready(function() {
 
         
         if(err_mess !== ''){
+            $('#loader').addClass('hidden');
             $('#lyrics_app').addClass('hidden');
             $('#response-mess').removeClass('hidden');
             $('#response-mess').html(err_mess)
@@ -71,6 +72,7 @@ $( document ).ready(function() {
         }
 
         if(err_mess !== ''){
+            $('#loader').addClass('hidden');
             $('#lyrics_app').addClass('hidden');
             $('#response-mess').removeClass('hidden');
             $('#response-mess').html(err_mess)
