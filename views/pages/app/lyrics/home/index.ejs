@@ -7,21 +7,31 @@
             <p class="text-md text-gray-600">Once the music is full loaded, click on the image</p>
         </div>
 
+        <div id="loader" class="loader"><div class="loader-container"><div class="loader-circle"></div></div></div>
+
         <div id="lyrics_app" class="hidden">
             <div id="content" class="mb-4">
-                <div class="flex flex-row">
-                    <div class="music_banner">
-                        <img class="w-full mb-2 h-64" style="box-shadow: -20px 20px #edf2f7;" src="https://i.pinimg.com/originals/7a/ec/a5/7aeca525afa2209807c15da821b2f2c6.png" alt="Music banner"/>
+                <div class="mb-4">
+                    <div class="grid ">
+                        <div class="grid__item w-full lg:w-1/4 md:w-2/4 sm:w-1/2 px-4 mx-auto">
+                            <div class="album relative">
+                                <a href="#iframe_genius">
+                                    <img class="music_banner w-full mb-2 cursor-pointer" style="box-shadow: -20px 20px #edf2f7;" src="https://i.pinimg.com/originals/7a/ec/a5/7aeca525afa2209807c15da821b2f2c6.png" alt="Music banner"/>
+                                </a>
+                                
+                                <div class="flex flex-col">
+                                    <a href="#" target="blank" class="music_title text-gray-800 text-3xl font-bold mt-10">Titre</a>
+                                    <div class="music_subtitle flex"></div>
+                                </div>
+                                
+                                <div class="album__description hidden">
+                                    <div class="music_link"> <a href="#" target="blank" class="text-green-400 underline block">Link to Spotify</a> </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col ml-4">
-                        <div class="music_title text-gray-800 text-3xl font-bold">Titre</div>
-                        <div class="music_subtitle text-gray-600 text-">Artists</div>
-
-                        <div class="music_link"> <a href="#" target="blank" class="text-green-400 underline block">Link to Spotify</a> </div>
-                        <div class="music_link_twitter"> <a href="#" target="blank" class="text-green-400 underline block">Share on twitter <i class="fa fa-twitter"></i> </a> </div>
-                    </div>
+                    <div id="iframe_genius"></div>
                 </div>
-                <div id="iframe_genius"></div>
             </div>
         </div>
 

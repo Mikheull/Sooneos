@@ -32,11 +32,17 @@ $( document ).ready(function() {
         }else{
             $('#lyrics_app').removeClass('hidden');
             $('#response-mess').addClass('hidden');
+            $('#loader').addClass('hidden');
 
             musicID = current_music.response.item.id
-            $('.music_banner img').attr('src', current_music.response.item.album.images[0].url)
-            $('.music_title').html(current_music.response.item.name)
-            $('.music_subtitle').html(current_music.response.item.album.artists[0].name)
+            $('.music_banner').attr('src', current_music.response.item.album.images[0].url)
+            $('.music_title').html(`"${current_music.response.item.name}"`)
+            $('.music_title').attr('href', current_music.response.item.external_urls.spotify)
+
+            $('.music_subtitle').html('');
+            current_music.response.item.artists.forEach(artist => {
+                $('.music_subtitle').append(`<a href="${artist.external_urls.spotify}" target="blank" class="ml-2 text-gray-600 text-md">${artist.name}</a>`)
+            });
 
 
             $('.music_link a').attr('href', current_music.response.item.external_urls.spotify)
