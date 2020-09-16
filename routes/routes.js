@@ -1,5 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const Utils = new (require('../models/Utils'))()
+
+let logged, user_data;
+
+router.use(async (req, res, next) => {
+	logged = req.logged;
+    user_data = req.user_data;
+	next();
+});
 
 router.use('/', require('./index') );
 router.use('/auth', require('./auth') );
@@ -19,8 +28,19 @@ router.get('/logout', function (req, res) {
 	res.redirect('/');
 })
 
-router.use(function(req,res){
-	res.render('404', {baseUri: process.env.BASE_URI});
+router.use(async function(req,res){
+    return res.render('index', {
+        data: {
+            authenticated: req.logged,
+            user_data
+        },
+        configuration: {
+            render: 'errors/404',
+            current_page: '404',
+            base_url: process.env.BASE_URL,
+            fs: await Utils.getPageConfig('errors/404')
+        }
+    });
 });
 
 
