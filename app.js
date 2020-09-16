@@ -8,6 +8,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const io = require('socket.io')(server, { wsEngine: 'ws' });
+const passport = require('passport');
+
+require('./config/passport')();
+
 
 // Models
 const Spotify = new (require('./models/Spotify'))()
@@ -47,6 +51,8 @@ app.use(async (req, res, next) => {
    
     next();
 });
+
+app.use(passport.initialize());
 
 
 
