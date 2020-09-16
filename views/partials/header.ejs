@@ -19,7 +19,7 @@
 			
 			<div class="hidden lg:block">
 				<div class="flex items-center ml-4 md:ml-6">
-					<a href="#" class="ml-4 flex flex-row font-medium text-gray-800 hover:text-gray-700"><i class="fa fa-bell"></i></a>
+					<a href="#" class="ml-4 flex flex-row font-medium text-gray-800 hover:text-gray-700 mr-6"><i class="fa fa-bell"></i></a>
 
 					<% if(data.authenticated == false) { %>
 						<a href="<%= configuration.base_url %>auth" class="ml-4 flex flex-row font-medium text-gray-800 hover:text-gray-700">Login</a>
@@ -27,7 +27,7 @@
 						<div @click.away="open = false" class="relative ml-3" x-data="{ open: false }">
 							<div>
 								<button @click="open = !open" class="flex items-center max-w-xs text-sm text-white rounded-full focus:outline-none focus:shadow-solid" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
-									<p class="text-gray-700 mr-2 font-semibold"><%= data.user_data.display_name %> <i class="fa fa-caret-down"></i></p>
+									<p class="text-gray-700 mr-4 font-semibold"><%= data.user_data.display_name %> <i class="fa fa-caret-down"></i></p>
 									<img class="w-8 h-8 rounded-full" src="<%= (data.user_data.images) ? data.user_data.images[0].url : 'https://748073e22e8db794416a-cc51ef6b37841580002827d4d94d19b6.ssl.cf3.rackcdn.com/not-found.png' %>" alt="Spotify profil pic" />
 								</button>
 							</div>
