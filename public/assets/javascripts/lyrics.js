@@ -1,5 +1,6 @@
 $( document ).ready(function() {
     let musicID = '';
+    let isPlaying = true;
 
     socket.emit( 'request_lyrics' ); 
 
@@ -30,12 +31,14 @@ $( document ).ready(function() {
             $('#lyrics_app').addClass('hidden');
             $('#response-mess').removeClass('hidden');
             $('#response-mess').html(err_mess)
+            isPlaying = false
         }else{
             $('#lyrics_app').removeClass('hidden');
             $('#response-mess').addClass('hidden');
             $('#loader').addClass('hidden');
 
             musicID = current_music.response.item.id
+            isPlaying = current_music.response.is_playing
             $('.music_banner').attr('src', current_music.response.item.album.images[0].url)
             $('.music_title').html(`"${current_music.response.item.name}"`)
             $('.music_title').attr('href', current_music.response.item.external_urls.spotify)
@@ -69,6 +72,7 @@ $( document ).ready(function() {
             }else if(response == 'music-not-found'){
                 err_mess = `<h3 class="text-gray-500 text-md mb-2">No music has been found!</h3>`
             }
+            isPlaying = false
         }
 
         if(err_mess !== ''){
@@ -89,7 +93,7 @@ $( document ).ready(function() {
     }
     
     let myInterval = setInterval(function () {
-        if(musicID !== ''){
+        if(musicID !== '' && isPlaying){
             socket.emit( 'check_music_changes', musicID ); 
         }
     }, 5000);
