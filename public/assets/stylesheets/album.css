@@ -1,0 +1,32 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Icons */
+.icon {display: block;width: 1.5em;height: 1.5em;margin: 0 auto;fill: currentColor;}
+
+/* Embed */
+.rg_embed_header {display: none !important;}
+.rg_embed_body {padding: 0 !important;}
+.rg_embed_body img {display: none !important;}
+.rg_embed[data-domain="genius.com"] {
+	margin-top: 40px;
+	width: 100%;
+	border: none;
+}
+.rg_embed[data-domain="genius.com"] a {
+	background: #e9e9e9;
+}
+.rg_embed_footer {display: none}
+
+
+/* Album */
+.music_banner {
+	box-shadow: -20px 20px #edf2f7;
+	transition-duration: 0.3s;
+}
+.music_banner:hover {
+	box-shadow: -25px 25px #edf2f7;
+	transition-duration: 0.3s;
+}

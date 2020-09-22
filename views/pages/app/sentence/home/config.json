@@ -1,0 +1,23 @@
+{
+    "metas": {
+        "title": "Sooneos - Sentence"
+    },
+
+    "must_be_logged": true,
+
+    "libs": [
+        "jquery",
+        "fontawesome"
+    ],
+
+    "css":{
+        "local": [],
+        "online": ["//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css", "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"]
+    },
+
+    "javascript":{
+        "local": ["sentence"],
+        "online": ["//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"]
+    }
+
+}

@@ -1,0 +1,39 @@
+<%- include('../../../../partials/header'); -%>
+
+    <div style="min-height: 80vh" class="px-6 mx-auto lg:px-16 h-auto">
+        <div class="mt-32 mb-16 text-center mx-auto px-4">
+            <h1 class="font-semibold text-5xl text-gray-700">Hello <span class="text-lyrics-600 font-bold"><%= data.user_data.display_name %></span></h1>
+            <p class="mt-2 text-2xl text-gray-600">Ready to sing until the end of the night?</p>
+            <p class="text-md text-gray-600">Once the music is full loaded, click on the image</p>
+        </div>
+
+        <div id="loader" class="loader"><div class="loader-container"><div class="loader-circle"></div></div></div>
+
+        <div id="lyrics_app" class="hidden">
+            <div id="content" class="mb-4">
+                <div class="mb-4">
+                    <div class="grid ">
+                        <div class="grid__item w-full lg:w-1/4 md:w-2/4 sm:w-1/2 px-4 mx-auto">
+                            <div class="album relative">
+                                <a href="#iframe_genius">
+                                    <img class="music_banner w-full mb-2 cursor-pointer" src="https://i.pinimg.com/originals/7a/ec/a5/7aeca525afa2209807c15da821b2f2c6.png" alt="Music banner"/>
+                                </a>
+                                
+                                <div class="flex flex-col">
+                                    <a href="#" target="blank" class="music_title text-lyrics-600 text-3xl font-bold mt-10">Titre</a>
+                                    <div class="music_subtitle flex"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="iframe_genius"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center hidden" id="response-mess">
+            <h3 class="text-gray-500 text-md mb-2">Loading ...</h3>
+        </div>
+    </div>
+
+<%- include('../../../../partials/footer'); -%>

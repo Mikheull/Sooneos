@@ -1,0 +1,40 @@
+{
+  "name": "sooneos",
+  "version": "1.0.0",
+  "description": "Lot of music applications with Spotify",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon",
+    "build": "npx tailwindcss build public/assets/stylesheets/main.css -o public/build/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikheull/Sooneos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikheull/Sooneos/issues"
+  },
+  "homepage": "https://github.com/Mikheull/Sooneos#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cookie": "^0.4.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
+    "passport": "^0.4.1",
+    "passport-spotify": "^1.1.0",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2",
+    "socket.io": "^2.3.0",
+    "tailwindcss": "^1.8.10"
+  }
+}
