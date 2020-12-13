@@ -5,8 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon",
-    "build": "npx tailwindcss build public/assets/stylesheets/main.css -o public/build/main.css"
+    "start": "nodemon . --exec babel-node",
+    "build": "npx tailwindcss build web/assets/css/main.css -o web/assets/css/dist/style.css",
+    "server": "babel-node app.js",
+    "dev": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
@@ -19,8 +21,18 @@
     "url": "https://github.com/Mikheull/Sooneos/issues"
   },
   "homepage": "https://github.com/Mikheull/Sooneos#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "babel-core": "^6.26.3",
+    "nodemon": "^1.19.4"
+  },
   "dependencies": {
     "axios": "^0.19.2",
+    "babel-node": "0.0.1-security",
     "body-parser": "^1.19.0",
     "cookie": "^0.4.1",
     "cookie-parser": "^1.4.5",
@@ -30,6 +42,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "fs": "0.0.1-security",
+    "i18n": "^0.13.2",
     "passport": "^0.4.1",
     "passport-spotify": "^1.1.0",
     "querystring": "^0.2.0",

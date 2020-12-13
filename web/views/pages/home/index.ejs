@@ -1,0 +1,63 @@
+<%- include('../../_partials/header'); -%>
+
+<style>section {min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #fff;}</style>
+<main id="main">
+    <section class="bg-gray-100">
+        <div class="items-center flex flex-wrap my-20 container mx-auto px-4">
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
+                <img alt="Illustration" class="max-w-full" src="uploads/images/illustrations/lyrics.svg"/>
+            </div>
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
+                <div class="md:pr-12 mt-5">
+                    <h3 class="text-3xl font-semibold text-lyrics-600"><%= __('homepage_lyrics_title') %></h3>
+                    <p class="mt-4 text-lg leading-relaxed text-gray-600"><%= __('homepage_lyrics_desc') %></p>
+                    <div class="mt-5">
+                        <a href="<%= configuration.base_url %>lyrics" class="bg-transparent hover:bg-lyrics-600 text-lyrics-700 font-semibold hover:text-white py-2 px-4 border border-lyrics-700 hover:border-transparent rounded"><%= __('homepage_lyrics_cta') %></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="">
+        <div class="items-center flex flex-wrap my-20 container mx-auto px-4">
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
+                <div class="md:pr-12 mt-5">
+                    <h3 class="text-3xl font-semibold text-sentence-600"><%= __('homepage_sentence_title') %></h3>
+                    <p class="mt-4 text-lg leading-relaxed text-gray-600"><%= __('homepage_sentence_desc') %></p>
+                    <div class="mt-5">
+                        <a href="<%= configuration.base_url %>sentence" class="bg-transparent hover:bg-sentence-600 text-sentence-700 font-semibold hover:text-white py-2 px-4 border border-sentence-700 hover:border-transparent rounded"><%= __('homepage_sentence_cta') %></a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4 order-first sm:order-first md:order-last lg:order-last xl:order-last">
+                <img alt="Illustration" class="max-w-full" src="uploads/images/illustrations/sentence.svg"/>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-100">
+        <div class="items-center flex flex-wrap my-20 container mx-auto px-4">
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
+                <img alt="Illustration" class="max-w-full" src="uploads/images/illustrations/lyrhole.svg"/>
+            </div>
+            <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
+                <div class="md:pr-12 mt-5">
+                    <h3 class="text-3xl font-semibold text-lyrhole-600"><%= __('homepage_lyrhole_title') %></h3>
+                    <p class="mt-4 text-lg leading-relaxed text-gray-600"><%= __('homepage_lyrhole_desc') %></p>
+                    <div class="mt-5">
+                        <a href="<%= configuration.base_url %>lyrhole" class="bg-transparent hover:bg-lyrhole-600 text-lyrhole-700 font-semibold hover:text-white py-2 px-4 border border-lyrhole-700 hover:border-transparent rounded"><%= __('homepage_lyrhole_cta') %></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+<script type="text/javascript">
+    window.test = new FullPatou.default();
+</script>
+
+<%- include('../../_partials/footer'); -%>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('core/metas'); -%>
+    <%- include('core/stylesheets'); -%>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> 
+    <link href="/assets/css/dist/style.css" rel="stylesheet">
+    <%- include('core/libs'); -%>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+</head>
+
+<body class="app">
+    <%- include( 'pages/' + locals.configuration.render + '/index.ejs'); -%>
+
+    <%- include('core/javascripts'); -%>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/assets/js/dist/script.js"></script>
+</body>
+</html>

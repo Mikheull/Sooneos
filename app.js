@@ -1,39 +1,48 @@
-const express = require("express");
+import express from 'express'
+import session from 'express-session'
+import cookie from 'cookie'
+import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import passport from 'passport'
+import path from 'path'
+import { I18n } from 'i18n'
+
 const app = express();
 const server = require('http').createServer(app);
-const session = require('express-session');
 const dotenv = require('dotenv').config()
-const cookie = require('cookie');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 const io = require('socket.io')(server, { wsEngine: 'ws' });
-const passport = require('passport');
 
-require('./config/passport')();
+const i18n = new I18n({
+    locales: ['en', 'fr'],
+    directory: path.join(__dirname, 'web/translations'),
+    defaultLocale: 'en',
+    cookie: 'sooneos_language',
+    queryParameter: 'lang',
+})
 
+import * as Passport from './config/passport'
 
 // Models
-const Spotify = new (require('./models/Spotify'))()
-const Lyrics = new (require('./models/Lyrics'))()
-const Blindtest = new (require('./models/Blind'))()
+import * as Spotify from './models/Spotify'
+import * as Lyrics from './models/Lyrics'
+
 
 // Config
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/web/views');
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static('web'));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors());
-app.use(session({secret: process.env.SESSION_SECRET,saveUninitialized: true,resave: true}))
-
+app.use(session({ secret: "E€$=vD6€HxP6vg&U33h2LZ96!;3Q4tm>mRµ", saveUninitialized: true, resave: true }))
+app.use(passport.initialize());
 app.use(async (req, res, next) => {
     req.Spotify = Spotify;
-
+    
     const logged = await Spotify.spotifyLogged(req);
-    req.logged = logged;
-
+    req.logged = (logged) ? true : false;
     let user_data;
     if(!req.cookies.userData) {
         const datas = await Spotify.getUserData(req);
@@ -48,11 +57,10 @@ app.use(async (req, res, next) => {
     }
        
     req.user_data = user_data;
-   
     next();
 });
+app.use(i18n.init)
 
-app.use(passport.initialize());
 
 
 
@@ -74,8 +82,7 @@ io.on('connection', async function(socket){
 			const idLyrics = await Lyrics.getIDLyrics(query);
 
 			if(idLyrics && idLyrics.response.hits[0]){
-                lyrics = idLyrics.response.hits[0].result.id;
-                io.to(socketId).emit('response_lyrics', lyrics, current_music); 
+                io.to(socketId).emit('response_lyrics', idLyrics.response.hits[0].result.id, current_music); 
 			}else{
 				io.to(socketId).emit('response_lyrics_error', 'lyrics-not-found'); 
 			}
@@ -107,22 +114,10 @@ io.on('connection', async function(socket){
     })
 
 
-    /**
-     * Blindtest -> Edit Usermane
-     */
-    socket.on('bl_edit_username', async function (username) { 
-        // console.log(username);
-        // console.log(cookies);
-
-        // cookies('blt_username', username, {maxAge: Date.now() + (1 * 3600 * 1000)});
-        // console.log(cookies);
-    })
-
 });
 
 
-// Router
-const router = require('./routes/routes');
+import router from './routes/routes'
 app.use('/', router);
 
 server.listen(process.env.PORT, () => {

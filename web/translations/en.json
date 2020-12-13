@@ -1,0 +1,38 @@
+{
+    "header_href_lyrics": "Lyrics",
+    "header_href_sentence": "Sentence",
+    "header_href_lyrhole": "Lyrhole",
+    "header_href_help": "Help",
+    "header_href_spotify_account": "Spotify Account",
+    "header_href_login": "Login",
+    "header_href_logout": "Sign out",
+
+    "404_title": "Page not found",
+    "404_cta": "Go back",
+
+    "login_title": "Login",
+    "login_subtitle": "Link your Spotify account to access Sooneos features",
+
+    "app_lyrics_title_hello": "Hello",
+    "app_lyrics_subtitle": "Ready to sing until the end of the night ?",
+    "app_lyrics_instruction": "Once the music is full loaded, click on the image. Press R to reload",
+    "app_lyrics_loading": "Loading ...",
+    "app_lyrics_refresh": "The page has been refreshed!",
+    "app_lyrics_error_spotify_disconnected": "You are not connected to Spotify!",
+    "app_lyrics_error_lyrics_not_found": "No lyrics has been found!",
+    "app_lyrics_error_music_not_found": "No music has been found!",
+    "app_lyrics_error_progress_music": "You have no music in progress.",
+    "app_lyrics_error_progress_music_cta": "Open Spotify",
+
+    "homepage_lyrics_title": "Lyrics",
+    "homepage_lyrics_desc": "Have you ever wanted to sing a song but you couldn’t find the lyrics quickly ? With Sooneos Lyrics, simply launch any song on your Spotify account (free and premium) and get the lyrics automatically",
+    "homepage_lyrics_cta": "Access",
+
+    "homepage_sentence_title": "Sentence",
+    "homepage_sentence_desc": "With Sooneos Sentence, you can send a sentence as a playlist.Just write your sentence in the dedicated field, and the algorithm will create your playlist, then you can share it on social networks, or get a link. If one or more words are not found, you will have the possibility to fill the gaps with \"fake music\" in order to keep a complete playlist.",
+    "homepage_sentence_cta": "Access",
+
+    "homepage_lyrhole_title": "Lyrhole",
+    "homepage_lyrhole_desc": "Lorem Ipsum",
+    "homepage_lyrhole_cta": "Access"
+}

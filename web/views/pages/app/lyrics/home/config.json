@@ -1,0 +1,23 @@
+{
+    "metas": {
+        "title": "Sooneos - Lyrics"
+    },
+
+    "must_be_logged": true,
+
+    "libs": [
+        "jquery",
+        "fontawesome"
+    ],
+
+    "css":{
+        "local": ["album", "toaster-box"],
+        "online": []
+    },
+
+    "javascript":{
+        "local": ["lyrics", "toaster-box"],
+        "online": []
+    }
+
+}

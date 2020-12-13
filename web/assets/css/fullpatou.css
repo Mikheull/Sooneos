@@ -1,0 +1,52 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+.fp body::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.fp body {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+.fp {overflow: hidden;}
+.fp body {
+	overflow: scroll;
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+	-ms-scroll-snap-type: y mandatory;
+	-webkit-scroll-snap-type: y mandatory;
+	scroll-snap-type: mandatory;
+	scroll-snap-type: y mandatory;
+	height: 100vh;
+}
+
+.fp-content {
+	height: 100vh;
+	scroll-snap-align: start;
+}
+
+/* Navigation */
+#fp-navigation {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#fp-navigation.left {left: 1.75rem;}
+#fp-navigation.right {right: 1.75rem;}
+#fp-navigation.invert-color {mix-blend-mode: exclusion;}
+
+#fp-navigation li {
+	display: block;
+	width: 10px;
+	height: 10px;
+	margin: 1.25rem 0;
+	background-color: #fff;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: .3s all ease-in-out;
+	opacity: .35;
+}
+
+#fp-navigation li.active {opacity: .85;}

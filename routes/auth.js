@@ -1,17 +1,12 @@
-const router = require('express').Router();
-const request = require('request');
-const querystring = require('querystring');
-const Utils = new (require('../models/Utils'))()
+import { Router } from 'express';
+import request from 'request'
+import querystring from 'querystring'
+import passport from 'passport'
 
-const passport = require('passport');
+const router = Router();
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
-let logged;
-router.use(async (req, res, next) => {
-	logged = req.logged;
-	next();
-});
-
+import * as utils from '../models/Utils'
 
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
@@ -31,12 +26,12 @@ router.get('/', async function(req, res, next) {
             render: 'auth/login',
             current_page: 'login',
             base_url: process.env.BASE_URL,
-            fs: await Utils.getPageConfig('auth/login')
+            fs: await utils.getPageConfig('auth/login')
         }
     });
 });
 
-router.get('/spotify', passport.authenticate("spotify", {scope: ["user-read-email", "user-read-private", "user-read-currently-playing", "playlist-modify-public"], showDialog: true}));
+router.get('/spotify', passport.authenticate("spotify", {scope: ["user-read-email", "user-read-private", "user-read-currently-playing", "playlist-modify-public", "user-library-read"], showDialog: true}));
 // router.get('/spotify/callback', passport.authenticate("spotify"), (req, res, next) => {
 //     res.send(req.user)
 // });
@@ -120,5 +115,4 @@ router.get('/spotify/token', function(req, res) {
     });
 });
 
-
-module.exports = router;
+export default router

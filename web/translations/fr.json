@@ -1,0 +1,38 @@
+{
+    "header_href_lyrics": "Lyrics",
+    "header_href_sentence": "Sentence",
+    "header_href_lyrhole": "Lyrhole",
+    "header_href_help": "Aide",
+    "header_href_spotify_account": "Compte Spotify",
+    "header_href_login": "Connexion",
+    "header_href_logout": "Déconnexion",
+
+    "404_title": "Page non trouvée",
+    "404_cta": "Retour en arrière",
+
+    "login_title": "Connexion",
+    "login_subtitle": "Liez votre compte Spotify pour accéder aux fonctionnalités de Sooneos",
+
+    "app_lyrics_title_hello": "Bonjour",
+    "app_lyrics_subtitle": "Prêt à chanter jusqu’à la fin de la nuit ?",
+    "app_lyrics_instruction": "Une fois que la musique est chargée, cliquez sur l’image. Appuyez sur R pour recharger",
+    "app_lyrics_loading": "Chargement ...",
+    "app_lyrics_refresh": "La page a été rafraichi !",
+    "app_lyrics_error_spotify_disconnected": "Vous n’êtes pas connecté à Spotify!",
+    "app_lyrics_error_lyrics_not_found": "Aucune parole n’a été trouvée!",
+    "app_lyrics_error_music_not_found": "Aucune musique n’a été trouvée!",
+    "app_lyrics_error_progress_music": "Vous n’avez pas de musique en cours.",
+    "app_lyrics_error_progress_music_cta": "Ouvrir Spotify",
+
+    "homepage_lyrics_title": "Lyrics",
+    "homepage_lyrics_desc": "Avez-vous déjà voulu chanter une chanson mais vous n’avez pas pu trouver les paroles rapidement ? Avec Sooneos Lyrics, lancez simplement n’importe quelle chanson sur votre compte Spotify (gratuit et premium) et obtenez les paroles automatiquement",
+    "homepage_lyrics_cta": "Accéder",
+
+    "homepage_sentence_title": "Sentence",
+    "homepage_sentence_desc": "Avec Sooneos Sentence, vous pouvez envoyer une phrase comme playlist. Il suffit d’écrire votre phrase dans le champ dédié, et l’algorithme va créer votre playlist, puis vous pouvez le partager sur les réseaux sociaux, ou obtenir un lien. Si un ou plusieurs mots ne sont pas trouvés, vous aurez la possibilité de combler les trous avec des \"fausse musique\" afin de garder une liste de lecture complète.",
+    "homepage_sentence_cta": "Accéder",
+
+    "homepage_lyrhole_title": "Lyrhole",
+    "homepage_lyrhole_desc": "Lorem Ipsum",
+    "homepage_lyrhole_cta": "Accéder"
+}

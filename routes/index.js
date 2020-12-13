@@ -1,26 +1,21 @@
-const router = require('express').Router();
-let logged, user_data;
-const Utils = new (require('../models/Utils'))()
+import { Router } from 'express';
+import * as utils from '../models/Utils'
 
-router.use(async (req, res, next) => {
-	logged = req.logged;
-	user_data = req.user_data;
-	next();
-});
+const router = Router();
 
 router.get('/', async function(req, res) {
     return res.render('index', {
         data: {
             authenticated: req.logged,
-            user_data
+            user_data: req.user_data
         },
         configuration: {
             render: 'home',
             current_page: 'home',
             base_url: process.env.BASE_URL,
-            fs: await Utils.getPageConfig('home')
+            fs: await utils.getPageConfig('home')
         }
     });
 });
 
-module.exports = router;
+export default router
