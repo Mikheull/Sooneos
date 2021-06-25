@@ -7,24 +7,22 @@ const GeniusIframe: React.FC = () => {
   const { data } = useSWR<LyricsResponse>(APIRoute.GET_LYRICS);
   const [isVisible, setVisible] = useState(false);
   
-  const isData = data;
+  const isData = data && data.lyrics;
 
   if (!isData) {
     return (
-      <div id="">
-          aaaa
+      <div className="px-6 mx-auto lg:px-16 h-auto" id="lyrics">
+        <h3 className="text-gray-500 text-md mb-2">No lyrics has been found!</h3>
       </div>
     );
   }
 
-  const url = `https://genius.com/songs/${data.lyricsID}/embed.js`;
-
   return (
-    <>
-        <div id={`rg_embed_link_5220753`} className='rg_embed_link' data-song-id="5220753"></div>
-        <span className="text-gray-800">{data.lyricsID}</span>
-        <script crossOrigin="true" async src={`https://genius.com/songs/${data.lyricsID}/embed.js`}></script>
-    </>
+    <div className="px-6 mx-auto lg:px-16 h-auto" id="lyrics">
+      <div className="mt-16 mb-16 mx-auto px-4">
+          <p className="text-md text-gray-600 whitespace-pre-line">{data.lyrics}</p>
+      </div>
+    </div>
   );
 };
 

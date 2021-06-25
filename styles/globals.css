@@ -40,19 +40,9 @@ img {
 
 
 
-/* Embed */
-.rg_embed_header {display: none !important;}
-.rg_embed_body {padding: 0 !important;}
-.rg_embed_body img {display: none !important;}
-.rg_embed[data-domain="genius.com"] {
-	margin-top: 40px;
-	width: 100%;
-	border: none;
+html {
+  scroll-behavior: smooth;
 }
-.rg_embed[data-domain="genius.com"] a {
-	background: #e9e9e9;
-}
-.rg_embed_footer {display: none}
 
 /* Album */
 .music_banner {
