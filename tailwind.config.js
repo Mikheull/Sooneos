@@ -1,8 +1,22 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
+  purge: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './layouts/**/*.{js,ts,jsx,tsx}',
+  ],
+  darkMode: false,
+  variants: {
+    margin: ['responsive', 'last'],
+  },
   theme: {
     extend: {
       colors: {
-        lyrics: {
+        'spotify-gray': 'rgb(24, 24, 24)',
+        'spotify-green': '#1db954',
+        'spotify-light-green': 'rgb(30, 215, 96)',
+        'lyrics': {
           50: '#F4FAF9',
           100: '#EAF5F4',
           200: '#CAE7E3',
@@ -14,21 +28,23 @@ module.exports = {
           800: '#134740',
           900: '#0D2F2B',
         },
-        sentence: {
-          50: '#FEF8F6',
-          100: '#FDF1EE',
-          200: '#F9DBD4',
-          300: '#F5C5B9',
-          400: '#EE9A85',
-          500: '#E76F51',
-          600: '#D06449',
-          700: '#8B4331',
-          800: '#683224',
-          900: '#452118',
-        },
+      },
+      borderColor: {
+        'spotify-green': '#1db954',
+      },
+      height: {
+        thumbnail: '3.125rem',
+      },
+      width: {
+        thumbnail: '3.125rem',
+      },
+      fontFamily: {
+        sans: ['Circular Std', ...fontFamily.sans],
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [],
-}
+};
