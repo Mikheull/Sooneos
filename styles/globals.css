@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url(/fonts/CircularStd-Bold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url(/fonts/CircularStd-Book.woff2) format('woff2');
+}
+
+body {
+  min-height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Album */
+.music_banner {
+  box-shadow: -20px 20px #edf2f7;
+  transition-duration: 0.3s;
+}
+.music_banner:hover {
+  box-shadow: -25px 25px #edf2f7;
+  transition-duration: 0.3s;
+}

@@ -1,40 +1,64 @@
 {
-  "name": "sooneos",
-  "version": "1.0.0",
-  "description": "Lot of music applications with Spotify",
-  "main": "app.js",
+  "name": "spotify-profile",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon",
-    "build": "npx tailwindcss build public/assets/stylesheets/main.css -o public/build/main.css"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prepare": "husky install",
+    "prettier": "prettier --write \"**/*.{tsx,ts,css,md,js,html}\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "npm run lint -- --fix",
+    "pre-commit": "lint-staged"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mikheull/Sooneos.git"
+  "lint-staged": {
+    "*.{ts,tsx,js,json}": [
+      "prettier --write",
+      "eslint"
+    ],
+    "*.{md,css}": [
+      "prettier --write"
+    ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mikheull/Sooneos/issues"
-  },
-  "homepage": "https://github.com/Mikheull/Sooneos#readme",
   "dependencies": {
-    "axios": "^0.19.2",
-    "body-parser": "^1.19.0",
-    "cookie": "^0.4.1",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.2",
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "fs": "0.0.1-security",
-    "passport": "^0.4.1",
-    "passport-spotify": "^1.1.0",
-    "querystring": "^0.2.0",
-    "request": "^2.88.2",
-    "socket.io": "^2.3.0",
-    "tailwindcss": "^1.8.10"
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@headlessui/react": "^1.3.0",
+    "@svgr/webpack": "^5.5.0",
+    "classnames": "^2.3.1",
+    "genius-lyrics": "^4.2.9",
+    "genius-lyrics-api": "^3.0.6",
+    "next": "10.1.3",
+    "next-auth": "^3.15.1",
+    "querystring": "^0.2.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "swr": "^0.5.5"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.32",
+    "@types/classnames": "^2.3.1",
+    "@types/next-auth": "^3.13.0",
+    "@types/node": "^14.14.41",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "autoprefixer": "^10.2.5",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^5.1.2",
+    "lint-staged": "^10.5.4",
+    "postcss": "^8.2.10",
+    "prettier": "^2.2.1",
+    "tailwindcss": "^2.1.1",
+    "typescript": "^4.2.4"
   }
 }
