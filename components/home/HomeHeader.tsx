@@ -39,10 +39,10 @@ const HomeHeader: React.FC<Props> = ({
     >
       {isLoading ? (
         <Fragment>
-          <div className="rounded-full bg-gray-600 h-40 w-40 mb-6" />
+          {/* <div className="rounded-full bg-gray-600 h-40 w-40 mb-6" />
           <div className=" bg-gray-600 w-7/12 md:w-60 h-7 md:h-11 rounded mb-6" />
           <div className=" bg-gray-600 w-9/12 md:w-96 h-11 rounded mb-10" />
-          <div className=" bg-gray-600 w-3/12 md:w-20 h-11 rounded mb-6" />
+          <div className=" bg-gray-600 w-3/12 md:w-20 h-11 rounded mb-6" /> */}
         </Fragment>
       ) : (
         
