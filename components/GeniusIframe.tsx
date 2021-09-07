@@ -11,8 +11,8 @@ const GeniusIframe: React.FC = () => {
 
   if (!isData) {
     return (
-      <div className="px-6 mx-auto lg:px-16 h-auto" id="lyrics">
-        <h3 className="text-gray-500 text-md mb-2">No lyrics has been found!</h3>
+      <div>
+        <div className="loading-spinner"></div>
       </div>
     );
   }

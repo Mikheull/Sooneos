@@ -26,15 +26,17 @@ const HomePage: React.FC<Props> = () => {
         profile={data?.profile}
       />
 
-      <div className="px-6 mx-auto lg:px-16 h-auto">
-        <div className="mt-32 mb-16 text-center mx-auto px-4">
-            <h1 className="font-semibold text-5xl text-gray-700">Hello <span className="text-lyrics-600 font-bold">{data?.profile.display_name}</span></h1>
-            <p className="mt-2 text-2xl text-gray-600">Ready to sing until the end of the night?</p>
-            <p className="text-md text-gray-600">Once the music is full loaded, click on the image</p>
+      <div className="min-h-screen">
+        <div className="px-6 mx-auto lg:px-16 h-auto">
+          <div className="mt-32 mb-16 text-center mx-auto px-4">
+              <h1 className="font-semibold text-5xl text-gray-700">Hello <span className="text-c-primary font-bold">{data?.profile.display_name}</span></h1>
+              <p className="mt-2 text-2xl text-gray-600">Ready to sing until the end of the night?</p>
+              <p className="text-md text-gray-600">Once the music is full loaded, click on the image</p>
+          </div>
         </div>
-      </div>
 
-      <LyricsCard />
+        <LyricsCard />
+      </div>
 
       <footer className="w-full bottom-0 bg-gray-900">
         <div className="container mx-auto p-8">
@@ -47,7 +49,6 @@ const HomePage: React.FC<Props> = () => {
             <div className="w-full md:w-4/12 px-4">
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
                 <li> <a href="https://github.com/Mikheull" target="blank" title="My Github account" className="text-white hover:text-gray-400 text-sm block py-1 px-3"> <FontAwesomeIcon icon={faGithub} /> </a> </li>
-                <li> <a href="https://linkedin.com/in/mikhael-bailly" target="blank" title="My Twitter account" className="text-white hover:text-gray-400 text-sm block py-1 px-3"> <FontAwesomeIcon icon={faLinkedin} /> </a> </li>
                 <li> <a href="https://twitter.com/Mikhael_Bailly" target="blank" title="My Linkedin account" className="text-white hover:text-gray-400 text-sm block py-1 px-3"> <FontAwesomeIcon icon={faTwitter} /> </a> </li>
               </ul>
             </div>

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 
-const PRELOADER_BG = 'rgb(24, 24, 24)';
+const PRELOADER_BG = '#FCF4EC';
 
 export const NO_PAGE_FLICKER_CLASSNAME = 'render';
 
@@ -10,7 +10,7 @@ export const hideBodyCss = `
     content: '';
     display: block;
     position: fixed;
-    width: 100vh;
+    width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;

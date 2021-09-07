@@ -14,13 +14,10 @@ const LyricsCard: React.FC = () => {
   if (!isPlaying) {
     return (
       <div className="px-6 mx-auto lg:px-16 h-auto">
-        <div className="mt-32 mb-16 text-center mx-auto px-4">
+        <div className="mt-16 mb-16 text-center mx-auto px-4">
           <div className="text-center">
-              <h3 className="text-gray-500 text-md mb-2">You have no music in progress.</h3>
-              <a href="spotify:track:4uLU6hMCjMI75M1A2tKUQC" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                  <i className="fa fa-play-circle mr-2"></i>
-                  <span>Open Spotify</span>
-              </a>
+              <img src="/static/images/no_music.svg" alt="No music in progress" className="mx-auto md:w-2/6 w-full" />
+              <h3 className="text-gray-500 text-md mt-2">You have no music in progress.</h3>
             </div>
         </div>
       </div>
@@ -42,7 +39,7 @@ const LyricsCard: React.FC = () => {
                               )}
                             </Link>
                             <div className="flex flex-col">
-                                <a href={data.songUrl} target="blank" className="music_title text-lyrics-600 text-3xl font-bold mt-10">"{data.songName}"</a>
+                                <a href={data.songUrl} target="blank" className="music_title text-c-primary text-3xl font-bold mt-10">"{data.songName}"</a>
                                 <div className="music_subtitle flex text-gray-400 truncate">{data.artists}</div>
                             </div>
                         </div>

@@ -49,15 +49,13 @@ const Login: CustomPage = () => {
                   buttonSize="small"
                   onClick={() => signIn('spotify', { callbackUrl: '/' })}
                 >
-                  <FontAwesomeIcon icon={faSpotify} /> Connect now
+                  <FontAwesomeIcon icon={faSpotify}/> Connect now
                 </Button>
               </div>
             </div>
           </div>
 
-
           <div className="hidden md:block md:w-3/5 h-screen" style={banner}></div>
-
         </div>
     </div>
     </AuthLayout>

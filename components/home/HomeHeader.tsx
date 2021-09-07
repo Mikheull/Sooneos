@@ -151,14 +151,14 @@ const HomeHeader: React.FC<Props> = ({
                   leaveTo="opacity-0 scale-95"
                 >
                   <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                    <Dialog.Title as="h3" className="font-semibold text-3xl leading-6 text-lyrics-600" >
+                    <Dialog.Title as="h3" className="font-semibold text-3xl leading-6 text-c-primary" >
                       About Sooneos
                     </Dialog.Title>
 
                     <div className="mt-2">
                       <div className="text-sm text-gray-500">
                           <p className="mb-2">Have you ever wanted to sing a song but you couldn’t find the lyrics quickly ? With Sooneos, simply launch any song on your Spotify account (free and premium) and get the lyrics automatically on this page</p>
-                          <p className="mb-2">The algorithm searches the lyrics, thanks to the title and the artists of the songs, on the website <a href="https://genius.com" target="blank" className="text-lyrics-700 hover:text-lyrics-500 underline">Genius</a>. If no lyrics are found (this is possible for lesser known songs and not available on <a href="https://genius.com" target="blank" className="text-lyrics-700 hover:text-lyrics-500 underline">Genius</a>) you will get an error notification</p>
+                          <p className="mb-2">The algorithm searches the lyrics, thanks to the title and the artists of the songs, on the website <a href="https://genius.com" target="blank" className="text-c-primary hover:text-c-primary underline">Genius</a>. If no lyrics are found (this is possible for lesser known songs and not available on <a href="https://genius.com" target="blank" className="text-c-primary hover:text-c-primary underline">Genius</a>) you will get an error notification</p>
                           <p className="mb-2">Sooneos detect when you change music and the lyrics will update automatically.</p>
                       </div>
 
@@ -167,21 +167,21 @@ const HomeHeader: React.FC<Props> = ({
                           <p className="mb-4">To use Sooneos, you must link your Spotify account to the application (necessary to know the music you listen in real time). We do not store any personal data.</p>
                           <p className="mb-4 text-gray-800 font-medium underline">Here is a list of required scopes and their use :</p>
                           <ul className="mb-4">
-                              <li className="flex"><span className="font-medium text-lyrics-700"><i className="fa fa-caret-right"></i> basic</span> <span className="italic text-gray-600 ml-2">Access to your accound data (for login)</span> </li>
-                              <li className="flex"><span className="font-medium text-lyrics-700"><i className="fa fa-caret-right"></i> <a href="https://developer.spotify.com/documentation/web-api/reference/player/get-the-users-currently-playing-track/" target="blank">user-read-currently-playing</a></span> <span className="italic text-gray-600 ml-2">Get your currently music</span> </li>
+                              <li className="flex"><span className="font-medium text-c-primary"><i className="fa fa-caret-right"></i> basic</span> <span className="italic text-gray-600 ml-2">Access to your accound data (for login)</span> </li>
+                              <li className="flex"><span className="font-medium text-c-primary"><i className="fa fa-caret-right"></i> <a href="https://developer.spotify.com/documentation/web-api/reference/player/get-the-users-currently-playing-track/" target="blank">user-read-currently-playing</a></span> <span className="italic text-gray-600 ml-2">Get your currently music</span> </li>
                           </ul>
                           <p className="mb-4">If you are logged in with a wrong account or want to log out of the application click <a onClick={() => signOut()} className="text-red-700 hover:text-red-500 underline cursor-pointer">here</a>. You can also remove Sooneos access to your Spotify account by clicking <a href="https://www.spotify.com/fr/account/apps/" target="blank" className="text-red-700 hover:text-red-500 underline">here</a>.</p>
                       </div>
 
                       <h2 className="text-gray-700 font-semibold text-3xl pt-6">Discover</h2>
                       <div className="text-sm text-gray-500">
-                          <p className="mb-2">Sooneos is an <a href="https://github.com/Mikheull/Sooneos" target="blank" className="text-lyrics-700 hover:text-lyrics-500 underline">open-source</a> project developed in NextJS with the <a href="https://developer.spotify.com/documentation/web-api/" target="blank" className="text-lyrics-700 hover:text-lyrics-500 underline">Spotify API</a>.</p>
+                          <p className="mb-2">Sooneos is an <a href="https://github.com/Mikheull/Sooneos" target="blank" className="text-c-primary hover:text-c-primary underline">open-source</a> project developed in NextJS with the <a href="https://developer.spotify.com/documentation/web-api/" target="blank" className="text-c-primary hover:text-c-primary underline">Spotify API</a>.</p>
                       </div>
 
                       <div className="mt-4">
                         <button
                           type="button"
-                          className="inline-flex justify-center px-4 py-2 text-sm font-medium text-lyrics-900 bg-lyrics-100 border border-transparent rounded-md hover:bg-lyrics-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                          className="inline-flex justify-center px-4 py-2 text-sm font-medium text-c-primary bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                           onClick={closeModal}>
                           Got it, thanks!
                         </button>

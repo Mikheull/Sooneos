@@ -16,6 +16,10 @@ module.exports = {
         'spotify-gray': 'rgb(24, 24, 24)',
         'spotify-green': '#1db954',
         'spotify-light-green': 'rgb(30, 215, 96)',
+        'c-primary': '#E8722C',
+        'c-primary-light': '#FCF4EC',
+        'c-gray': '#262724',
+        'c-gray-light': '#F4F6F6',
         'lyrics': {
           50: '#F4FAF9',
           100: '#EAF5F4',
